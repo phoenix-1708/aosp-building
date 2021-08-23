@@ -1,0 +1,19 @@
+env: # Environt variable to pass to all tasks
+    CIRRUS_CLONE_DEPTH: 1 # No need to clone with whole history
+    CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
+    rclone_config: "ENCRYPTED[437f338c9f49dea442da9384f4e04bea63ea43891962113aee1ff5436352358b82337b8688acce5ac34287d29aae67dc]"
+    BOT_TOKEN: "ENCRYPTED[40ad0b1c77caa25ca66340ad8a620ed1ccbf3ba79c315bd7a6afee577b41e356a07f608917a5f7096e1a28baac164bbc]"
+    CHAT_ID: "ENCRYPTED[1182f2d75121e4f68680f38363a3e537b7bdcc22e17999f7701be7b79d6522186b0b541b37dc364766386acc6120972c]"
+    user_email: "ENCRYPTED[91c7f18580009bb71fc25c0283c40d1f529706126cc756a38bd87e75318fd4b11b1b9cca0dae959b4f3d9d7d80934127]"
+    user_name: "makhk"
+task:
+    name: ROMBuild
+    timeout_in: 120m
+    container:
+      image: apon77/aosp:latest
+      cpu: 8
+      memory: 32G
+    build_script:
+      - ./setup.sh
+  #  upload_ccache_script:
+  #    - ./upload_ccache.sh
